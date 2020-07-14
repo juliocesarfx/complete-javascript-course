@@ -11,30 +11,53 @@
 <body>
     <h1>Asynchronous JavaScript</h1>
     <script>
-        const jlo = new Promise((ok, err) => {
-            setTimeout(() => {
-                ok(200);
-            }, 2000);
-        });
+        /*         const jlo = new Promise((ok, err) => {
+                    setTimeout(() => {
+                        ok(200);
+                    }, 2000);
+                });
 
-        const jlo2 = n => new Promise((ok, err) => {
-            setTimeout((n) => {
-                ok(n + 1);
-            }, 2000, n);
-        });
+                const jlo2 = n => new Promise((ok, err) => {
+                    setTimeout((n) => {
+                        ok(n + 1);
+                    }, 2000, n);
+                });
 
-        // jlo.then(r => {console.log(r)});
+                // jlo.then(r => {console.log(r)});
 
-        async function getJlo() {
-            const j1 = await jlo;
-            const j2 = await jlo2(j1);
-            return j2;
-        }
-        getJlo()
+                async function getJlo() {
+                    const j1 = await jlo;
+                    const j2 = await jlo2(j1);
+                    return j2;
+                }
+                getJlo()
+                    .then(r => {
+                        console.log(r);
+                    });
+                console.log('ok'); */
+
+
+        function getWeather(woeid) {
+           fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/`)
             .then(r => {
-                console.log(r);
-            });
-        console.log('ok');
+                return r.json();
+            })
+            .then(d => {
+                console.log(`Wheater in ${d.title} is `);
+            })
+            .catch(e => {
+                console.log(`Error ${e}`);
+            })
+            ;
+        }
+
+        async function getWeatherAW(woeid) {
+            const r = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/`);
+            const d = await r.json();
+            console.log(`Weather in ${d.title} is`);
+            return d;
+        }
+        getWeatherAW(44418).then(d => {console.log(d.title)});
     </script>
 </body>
 
