@@ -137,17 +137,40 @@ i {
     transition: margin 0.3s;
 }
 
+input {
+    position: absolute;
+    width: 64px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #555;
+    background: none;
+    border: 1px solid gray;
+    font-family: Lato;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 300;
+    transition: background-color 0.3s, color 0.3s;
+}
+
 .btn-new { top: 45px;}
+.in-goal { top: 339px;}
 .btn-roll { top: 403px;}
 .btn-hold { top: 467px;}
 
 .dice {
     position: absolute;
-    left: 50%;
     top: 178px;
-    transform: translateX(-50%);
     height: 100px;
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
+}
+.dice1 {
+    left: 43%;
+    transform: translateX(-43%);
+}
+.dice2 {
+    left: 57%;
+    transform: translateX(-57%);
 }
 
 .winner { background-color: #f7f7f7; }
